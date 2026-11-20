@@ -1,5 +1,4 @@
--- Keyboard for mobile script
-
+-- Developed by M4teoScripts                                                                                                                                                                                                                                                                                                                                                                                           
 
 -- Load main script
 pcall(function()
@@ -7,6 +6,6 @@ pcall(function()
 	if fn then
 		fn()
 	else
-		print("Failed to load script")
+		print("Failed to load script")  
 	end
 end)
