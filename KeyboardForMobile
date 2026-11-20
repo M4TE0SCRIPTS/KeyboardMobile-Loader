@@ -5,7 +5,14 @@ pcall(function()
 	local fn = loadstring(game:HttpGet("https://raw.githubusercontent.com/M4TE0SCRIPTS/Keyboard-Main/refs/heads/main/KeyboardForMobile-Main"))
 	if fn then
 		fn()
+		pcall(function()
+			game:GetService("StarterGui"):SetCore("SendNotification", {  
+				Title = "Loaded",                    
+				Text = "Script loaded successfully", -- Notification if you load
+				Duration = 3.5
+			})
+		end)
 	else
-		print("Failed to load script")  
+		print("Failed to load script")
 	end
 end)
