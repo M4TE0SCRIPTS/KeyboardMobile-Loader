@@ -1,0 +1,12 @@
+-- Keyboard for mobile script
+
+
+-- Load main script
+pcall(function()
+	local fn = loadstring(game:HttpGet("https://raw.githubusercontent.com/M4TE0SCRIPTS/Keyboard-Main/refs/heads/main/KeyboardForMobile-Main"))
+	if fn then
+		fn()
+	else
+		print("Failed to load script")
+	end
+end)
