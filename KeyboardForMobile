@@ -1,6 +1,7 @@
+-- Script to load the mobile keyboard
 local StarterGui = game:GetService("StarterGui")
 
-
+Notification on loading
 pcall(function()
 	StarterGui:SetCore("SendNotification", {
 		Title = "Mobile Keyboard",
