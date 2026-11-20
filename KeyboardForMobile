@@ -5,32 +5,35 @@ local StarterGui = game:GetService("StarterGui")
 local URL = "https://raw.githubusercontent.com/M4TE0SCRIPTS/Keyboard-Main/refs/heads/main/KeyboardForMobile-Main"
 
 local function Notify(title, message)
-    pcall(function()
-        StarterGui:SetCore("SendNotification", {
-            Title = title,
-            Text = message,
-            Duration = 5
-        })
-    end)
+	pcall(function()
+		StarterGui:SetCore("SendNotification", {
+			Title = title,
+			Text = message,
+			Duration = 5,
+		})
+	end)
 end
 
 local success, err = pcall(function()
-    local response = game:HttpGet(URL)
+	local response = game:HttpGet(URL)
 
-    if not response or response == "" then
-        error("Downloaded script is empty.")
-    end
+	if not response or response == "" then
+		error("Downloaded script is empty.")
+	end
 
-    local execute, compileError = loadstring(response)
+	local execute, compileError = loadstring(response)
 
-    if not execute then
-        error(compileError or "Compilation failed.")
-    end
+	if not execute then
+		error(compileError or "Compilation failed.")
+	end
 
-    execute()
+	execute()
 end)
 
-if not success then
-    warn("[KeyboardMobile] " .. tostring(err))
-    Notify("Keyboard Mobile", "Failed to load script! Please try again.")
+if success then
+	Notify("Keyboard Mobile", "Script loaded successfully!")
+else
+	warn("[KeyboardMobile] " .. tostring(err))
+	Notify("Keyboard Mobile", "Failed to load script! Please try again.")
 end
+ 
