@@ -17,8 +17,6 @@ A lightweight Luau UI utility for Roblox touchscreen devices, featuring a 3D-sty
 
 ```lua
 	loadstring(game:HttpGet("[https://raw.githubusercontent.com/M4TE0SCRIPTS/Keyboard-Main/refs/heads/main/KeyboardForMobile-Main](https://raw.githubusercontent.com/M4TE0SCRIPTS/Keyboard-Main/refs/heads/main/KeyboardForMobile-Main)"))()
-end)
 ```
 # Developers
-M4teoScripts
-YouTube: @MateoScripts 
+M4teoScripts\nYouTube: @MateoScripts 
