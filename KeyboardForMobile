@@ -1,21 +1,36 @@
--- Script to load the mobile keyboard
+-- Developed by M4teoScripts
+
 local StarterGui = game:GetService("StarterGui")
 
--- Notification on loading
-pcall(function()
-	StarterGui:SetCore("SendNotification", {
-		Title = "Mobile Keyboard",
-		Text = "Script executed successfully. Loading...",
-		Duration = 5 -- Duration in seconds
-	})
-end)
+local URL = "https://raw.githubusercontent.com/M4TE0SCRIPTS/Keyboard-Main/refs/heads/main/KeyboardForMobile-Main"
 
--- Load and run the main script
+local function Notify(title, message)
+    pcall(function()
+        StarterGui:SetCore("SendNotification", {
+            Title = title,
+            Text = message,
+            Duration = 5
+        })
+    end)
+end
+
 local success, err = pcall(function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/M4TE0SCRIPTS/Keyboard-Main/refs/heads/main/KeyboardForMobile-Main"))()
+    local response = game:HttpGet(URL)
+
+    if not response or response == "" then
+        error("Downloaded script is empty.")
+    end
+
+    local execute, compileError = loadstring(response)
+
+    if not execute then
+        error(compileError or "Compilation failed.")
+    end
+
+    execute()
 end)
 
 if not success then
-	warn("Failed to load script:", err)
+    warn("[KeyboardMobile] " .. tostring(err))
+    Notify("Keyboard Mobile", "Failed to load script! Please try again.")
 end
- 
