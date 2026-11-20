@@ -1,18 +1,36 @@
--- Developed by M4teoScripts                                                                                                                                                                                                                                                                                                                                                                                           
+-- Developed by M4teoScripts
 
--- Load main script
-pcall(function()
-	local fn = loadstring(game:HttpGet("https://raw.githubusercontent.com/M4TE0SCRIPTS/Keyboard-Main/refs/heads/main/KeyboardForMobile-Main"))
-	if fn then
-		fn()
-		pcall(function()
-			game:GetService("StarterGui"):SetCore("SendNotification", {  
-				Title = "Loaded",                    
-				Text = "Script loaded successfully", -- Notification if you load
-				Duration = 3.5
-			})
-		end)
-	else
-		print("Failed to load script")
-	end
+local StarterGui = game:GetService("StarterGui")
+
+local function Notify(title, message)
+    pcall(function()
+        StarterGui:SetCore("SendNotification", {
+            Title = title,
+            Text = message,
+            Duration = 5
+        })
+    end)
+end
+
+local URL = "https://raw.githubusercontent.com/M4TE0SCRIPTS/Keyboard-Main/refs/heads/main/KeyboardForMobile-Main"
+
+Notify("Keyboard Mobile", "Downloading script...")
+
+local success, err = pcall(function()
+    local response = game:HttpGet(URL)
+
+    local fn, compileError = loadstring(response)
+
+    if not fn then
+        error(compileError)
+    end
+
+    fn()
 end)
+
+if success then
+    Notify("Keyboard Mobile", "Successfully loaded!")
+else
+    Notify("Keyboard Mobile", "Error: " .. tostring(err))
+    warn("[KeyboardMobile] " .. tostring(err))
+end
